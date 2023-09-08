@@ -38,4 +38,4 @@ time.sleep(10000)
 
 # 赞赏
 
-![image-20230908133417504](/Users/wangpengjie/Library/Application Support/typora-user-images/image-20230908133417504.png)
+![image-20230908133417504](https://github.com/winner-hue/pjstealth/blob/main/image-20230908133417504.png)
