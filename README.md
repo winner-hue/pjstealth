@@ -1,7 +1,15 @@
 # pjstealth
-浏览器特征抹除，及浏览器指纹随机化
 
-# use
+支持浏览器特征抹除，及浏览器指纹随机化；当前仅支持playwright自动化工具，后续会考虑增加selenium接口
+
+# install
+
+```python
+pip install pjstealth
+```
+
+# usage
+
 ```python
 import time
 
@@ -23,3 +31,11 @@ page.goto("https://web.uutool.cn/")
 time.sleep(10000)
 
 ```
+
+# 效果
+
+自行体验😁
+
+# 赞赏
+
+![image-20230908133417504](/Users/wangpengjie/Library/Application Support/typora-user-images/image-20230908133417504.png)
