@@ -36,6 +36,6 @@ time.sleep(10000)
 
 自行体验😁
 
-# 赞赏
+# 微信赞赏
 
 ![image-20230908133417504](https://github.com/winner-hue/pjstealth/blob/main/image-20230908133417504.png)
