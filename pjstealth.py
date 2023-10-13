@@ -143,6 +143,56 @@ class StealthConfig(object):
         if self.nav_platform.__eq__("Win32"):
             self.sys_platform = 'Windows'
 
+        self.webdriver = info.get("webdriver") if info.get("webdriver") is not None else self.webdriver
+        self.webgl_vendor = info.get("webgl_vendor") if info.get("webgl_vendor") is not None else self.webgl_vendor
+        self.navigator_vendor = info.get("navigator_vendor") if info.get(
+            "navigator_vendor") is not None else self.navigator_vendor
+        self.navigator_plugins = info.get("navigator_plugins") if info.get(
+            "navigator_plugins") is not None else self.navigator_plugins
+        self.navigator_permissions = info.get("navigator_permissions") if info.get(
+            "navigator_permissions") is not None else self.navigator_permissions
+        self.navigator_languages = info.get("navigator_languages") if info.get(
+            "navigator_languages") is not None else self.navigator_languages
+        self.navigator_language = info.get("navigator_language") if info.get(
+            "navigator_language") is not None else self.navigator_language
+        self.navigator_platform = info.get("navigator_platform") if info.get(
+            "navigator_platform") is not None else self.navigator_platform
+        self.navigator_user_agent = info.get("navigator_user_agent") if info.get(
+            "navigator_user_agent") is not None else self.navigator_user_agent
+        self.media_codecs = info.get("media_codecs") if info.get("media_codecs") is not None else self.media_codecs
+        self.iframe_content_window = info.get("iframe_content_window") if info.get(
+            "iframe_content_window") is not None else self.iframe_content_window
+
+        self.chrome_runtime = info.get("chrome_runtime") if info.get(
+            "chrome_runtime") is not None else self.chrome_runtime
+        self.chrome_load_times = info.get("chrome_load_times") if info.get(
+            "chrome_load_times") is not None else self.chrome_load_times
+        self.chrome_csi = info.get("chrome_csi") if info.get("chrome_csi") is not None else self.chrome_csi
+        self.chrome_app = info.get("chrome_app") if info.get("chrome_app") is not None else self.chrome_app
+        self.outerdimensions = info.get("outerdimensions") if info.get(
+            "outerdimensions") is not None else self.outerdimensions
+        self.hairline = info.get("hairline") if info.get("hairline") is not None else self.hairline
+        self.chrome_cssfeature = info.get("chrome_cssfeature") if info.get(
+            "chrome_cssfeature") is not None else self.chrome_cssfeature
+        self.chrome_fontsfeature = info.get("chrome_fontsfeature") if info.get(
+            "chrome_fontsfeature") is not None else self.chrome_fontsfeature
+        self.chrome_headless_check = info.get("chrome_headless_check") if info.get(
+            "chrome_headless_check") is not None else self.chrome_headless_check
+        self.chrome_webrtc = info.get("chrome_webrtc") if info.get("chrome_webrtc") is not None else self.chrome_webrtc
+        self.is_mobile = info.get("is_mobile") if info.get("is_mobile") is not None else self.is_mobile
+        self.is_user_agent_data = info.get("is_user_agent_data") if info.get(
+            "is_user_agent_data") is not None else self.is_user_agent_data
+        self.navigator_hardware_concurrency_flag = info.get("navigator_hardware_concurrency_flag") if info.get(
+            "navigator_hardware_concurrency_flag") is not None else self.navigator_hardware_concurrency_flag
+        self.navigator_device_memory = info.get("navigator_device_memory") if info.get(
+            "navigator_device_memory") is not None else self.navigator_device_memory
+        self.chrome_canvasfeature = info.get("chrome_canvasfeature") if info.get(
+            "chrome_canvasfeature") is not None else self.chrome_canvasfeature
+        self.chrome_videofeature = info.get("chrome_videofeature") if info.get(
+            "chrome_videofeature") is not None else self.chrome_videofeature
+        self.chrome_clientrectfeature = info.get("chrome_clientrectfeature") if info.get(
+            "chrome_clientrectfeature") is not None else self.chrome_clientrectfeature
+
     @property
     def enabled_scripts(self):
         opts = json.dumps({
