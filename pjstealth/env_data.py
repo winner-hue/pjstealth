@@ -131,7 +131,7 @@ env_data = {
         "sys_platform": "Windows"
     },
     "MacIntel": {
-        "webgl_infos": random.choice(mac_webgl),
+        "webgl_infos": mac_webgl,
         "sys_platform": "macOS"
     },
     "webrtc": webrtc,

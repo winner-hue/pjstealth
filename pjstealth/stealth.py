@@ -73,6 +73,7 @@ class StealthConfig(object):
     random_feature = True
 
     def __init__(self, page, **kwargs):
+        # 匹配user-agent
         self.navigator_user_agent: str = page.evaluate("navigator.userAgent")
         self.navigator_platform = page.evaluate("navigator.platform")
 
@@ -83,7 +84,7 @@ class StealthConfig(object):
 
             self.navigator_languages = env_data.get("languages")
             self.navigator_language = env_data.get("language")
-
+            # user-agent mac(m系列和非m系列)， windows版对应
             self.navigator_user_agent = env_data.get("user_agent") if env_data.get(
                 "user_agent") is not None else self.navigator_user_agent
             self.browser_version = env_data.get("browser_version")
@@ -91,15 +92,35 @@ class StealthConfig(object):
             if self.navigator_user_agent:
                 if self.navigator_user_agent.lower().__contains__("(mac"):
                     self.navigator_platform = 'MacIntel'
+
+                    if not self.navigator_user_agent.lower().__contains__("intel"):
+                        while True:
+                            tmp_webgl_info = random.choice(env_data.get(self.navigator_platform).get("webgl_infos"))
+                            if str(tmp_webgl_info).lower().__contains__("m1") or str(
+                                    tmp_webgl_info).lower().__contains__("m2"):
+                                self.vendor = tmp_webgl_info[0]
+                                self.renderer = tmp_webgl_info[1]
+                                break
+                    else:
+                        while True:
+                            tmp_webgl_info = random.choice(env_data.get(self.navigator_platform).get("webgl_infos"))
+                            if str(tmp_webgl_info).lower().__contains__("m1") or str(
+                                    tmp_webgl_info).lower().__contains__("m2"):
+                                continue
+                            else:
+                                self.vendor = tmp_webgl_info[0]
+                                self.renderer = tmp_webgl_info[1]
+                                break
+
                 if self.navigator_user_agent.lower().__contains__("(windows"):
                     self.navigator_platform = 'Win64'
+
+                    self.vendor = env_data.get(self.navigator_platform).get("webgl_infos")[0]
+                    self.renderer = env_data.get(self.navigator_platform).get("webgl_infos")[1]
 
                 self.browser_version = re.search(r"Chrome/(\d+)", self.navigator_user_agent).group(1)
             self.navigator_platform = self.navigator_platform if self.navigator_platform is not None else random.choice(
                 ['MacIntel', 'Win64'])
-
-            self.vendor = env_data.get(self.navigator_platform).get("webgl_infos")[0]
-            self.renderer = env_data.get(self.navigator_platform).get("webgl_infos")[1]
 
             self.sys_platform = env_data.get(self.navigator_platform).get("sys_platform")
 

@@ -10,7 +10,7 @@ proxy = {
 browser = p.chromium.launch(headless=False)
 
 context = browser.new_context(
-    user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+    user_agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5005.61 Safari/537.36',
     proxy=proxy,
     locale="en-US, en",
     timezone_id="Europe/London",
@@ -22,6 +22,4 @@ stealth_sync(page)
 
 page.goto("https://www.ip77.net/")
 
-
 time.sleep(100000)
-
