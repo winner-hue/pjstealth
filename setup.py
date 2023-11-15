@@ -11,8 +11,8 @@ setuptools.setup(
     url="https://github.com/winner-hue/pjstealth",
     packages=['pjstealth'],
     include_package_data=True,
-    # package_data={
-    #     '': ['js']
-    # },
+    package_data={
+        '': ['pjstealth']
+    },
     python_require=">=3"
 )
