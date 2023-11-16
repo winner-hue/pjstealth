@@ -1,7 +1,9 @@
+import asyncio
 import time
 
 from playwright.sync_api import sync_playwright
-from pjstealth import stealth_sync
+from pjstealth import stealth_sync, stealth_async
+from playwright.async_api import async_playwright
 
 p = sync_playwright().start()
 proxy = {
@@ -23,3 +25,16 @@ stealth_sync(page)
 page.goto("https://www.ip77.net/")
 
 time.sleep(100000)
+
+# async def main():
+#     async with async_playwright() as p:
+#         browser = await p.chromium.launch(headless=False)
+#         page = await browser.new_page()
+#         await stealth_async(page)
+#         await page.goto("https://www.ip77.net/")
+#         print(await page.title())
+#         time.sleep(100000)
+#         await browser.close()
+#
+#
+# asyncio.run(main())

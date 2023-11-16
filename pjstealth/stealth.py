@@ -72,10 +72,10 @@ class StealthConfig(object):
     # 随机特征开启默认为false
     random_feature = True
 
-    def __init__(self, page, **kwargs):
+    def __init__(self, navigator_user_agent, navigator_platform, **kwargs):
         # 匹配user-agent
-        self.navigator_user_agent: str = page.evaluate("navigator.userAgent")
-        self.navigator_platform = page.evaluate("navigator.platform")
+        self.navigator_user_agent: str = navigator_user_agent
+        self.navigator_platform = navigator_platform
 
         self.random_feature = kwargs.get("random_feature") if kwargs.get(
             "random_feature") is not None else self.random_feature
