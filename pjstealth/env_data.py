@@ -134,6 +134,10 @@ env_data = {
         "webgl_infos": mac_webgl,
         "sys_platform": "macOS"
     },
+    "Linux x86_64": {
+        "webgl_infos": random.choice(windows_webgl),
+        "sys_platform": "Windows"
+    },
     "webrtc": webrtc,
     "headless_check": headless_check,
     "canvasfeature": canvasfeature,

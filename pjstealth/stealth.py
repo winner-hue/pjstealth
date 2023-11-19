@@ -118,6 +118,11 @@ class StealthConfig(object):
                     self.vendor = env_data.get(self.navigator_platform).get("webgl_infos")[0]
                     self.renderer = env_data.get(self.navigator_platform).get("webgl_infos")[1]
 
+                if self.navigator_user_agent.lower().__contains__("linux"):
+                    self.navigator_platform = "Linux x86_64"
+                    self.vendor = env_data.get(self.navigator_platform).get("webgl_infos")[0]
+                    self.renderer = env_data.get(self.navigator_platform).get("webgl_infos")[1]
+
                 self.browser_version = re.search(r"Chrome/(\d+)", self.navigator_user_agent).group(1)
             self.navigator_platform = self.navigator_platform if self.navigator_platform is not None else random.choice(
                 ['MacIntel', 'Win64'])
