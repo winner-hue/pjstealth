@@ -45,7 +45,8 @@ SCRIPTS: Dict[str, str] = {
     'hookfuc_headless': from_file('hookfuc.headless.js'),
     'chrome_videofeature': from_file('chrome.videofeature.js'),
     'chrome_canvasfeature2': from_file('chrome.canvasfeature2.js'),
-    'chrome_screen_colordepth': from_file('chrome.screen.colordepth.js')
+    'chrome_screen_colordepth': from_file('chrome.screen.colordepth.js'),
+    'chrome_mouse_event': from_file('chrome.mouseevent.js')
 }
 
 
@@ -55,6 +56,9 @@ class StealthConfig(object):
     renderer: str = 'Intel Iris OpenGL Engine'
     nav_vendor: str = 'Google Inc.'
     runOnInsecureOrigins: Optional[bool] = None
+    mouse_detail = 0
+    mouse_button = 0
+    mouse_buttons = 1
 
     webdriver: bool = True
     webgl_vendor: bool = True
@@ -221,7 +225,12 @@ class StealthConfig(object):
             "clientrectfeature": self.clientrectfeature,
             "headless_check": self.headless_check,
             "fonts_start": 0,
-            'screen_color_depth': self.screen_color_depth
+            'screen_color_depth': self.screen_color_depth,
+            "mouse_event": {
+                "detail": self.mouse_detail,
+                "button": self.mouse_button,
+                "buttons": self.mouse_buttons
+            }
         }
 
     @property
@@ -300,3 +309,5 @@ class StealthConfig(object):
 
         if self.opts.get("screen_color_depth"):
             yield SCRIPTS['chrome_screen_colordepth']
+        if self.opts.get("mouse_event"):
+            yield SCRIPTS['chrome_mouse_event']
