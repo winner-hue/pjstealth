@@ -11,6 +11,34 @@ var rand = {
 };
 Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
     get() {
+        if (this.style.fontFamily.includes("monospace")) {
+            let tmpFontFamily = this.style.fontFamily.replace("monospace", "").replace(",", "").trim();
+            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+                console.log("检测到key...", this.style.fontFamily);
+                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "monospace";
+            }
+        }
+
+        if (this.style.fontFamily.includes("sans-serif")) {
+            let tmpFontFamily = this.style.fontFamily.replace("sans-serif", "").replace(",", "").trim();
+            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+                console.log("检测到key...", this.style.fontFamily);
+                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "sans-serif";
+            }
+        }
+
+        if (this.style.fontFamily.includes("serif")) {
+            let tmpFontFamily = this.style.fontFamily.replace("serif", "").replace(",", "").trim();
+            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+                console.log("检测到key...", this.style.fontFamily);
+                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "serif";
+            }
+        }
+
+        if (opts.fontsfeature.hasOwnProperty(this.style.fontFamily)) {
+            this.style.fontFamily = opts.fontsfeature[this.style.fontFamily];
+        }
+
         let height = 500;
         try {
             height = Math.floor(this.getBoundingClientRect().height);
@@ -23,10 +51,35 @@ Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
 
 Object.defineProperty(HTMLElement.prototype, "offsetWidth", {
     get() {
-        opts.fonts_start = opts.fonts_start + 1;
-        if (opts.fonts_start < opts.fontsfeature.change_index.length && opts.fontsfeature.change_index[opts.fonts_start] !== 0) {
-            this.style.fontFamily = opts.fontsfeature.width[opts.fonts_start];
+        // opts.fonts_start = opts.fonts_start + 1;
+        // if (opts.fonts_start < opts.fontsfeature.change_index.length && opts.fontsfeature.change_index[opts.fonts_start] !== 0) {
+        //     this.style.fontFamily = opts.fontsfeature.width[opts.fonts_start];
+        // }
+        if (this.style.fontFamily.includes("monospace")) {
+            let tmpFontFamily = this.style.fontFamily.replace("monospace", "").replace(",", "").trim();
+            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+                console.log("检测到key...", this.style.fontFamily);
+                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "monospace";
+            }
         }
+
+        if (this.style.fontFamily.includes("sans-serif")) {
+            let tmpFontFamily = this.style.fontFamily.replace("sans-serif", "").replace(",", "").trim();
+            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+                console.log("检测到key...", this.style.fontFamily);
+                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "sans-serif";
+            }
+        }
+
+        if (this.style.fontFamily.includes("serif")) {
+            let tmpFontFamily = this.style.fontFamily.replace("serif", "").replace(",", "").trim();
+            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+                console.log("检测到key...", this.style.fontFamily);
+                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "serif";
+            }
+        }
+
+
         let width = 500;
         try {
             width = Math.floor(this.getBoundingClientRect().width);
