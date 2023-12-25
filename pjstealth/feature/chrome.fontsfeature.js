@@ -9,36 +9,34 @@ var rand = {
         return tmp[index];
     }
 };
+var hookFonts = function (originFamily) {
+    if (originFamily.includes("monospace")) {
+        let tmpFontFamily = originFamily.replace("monospace", "").replace(",", "").trim();
+        if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+            originFamily = opts.fontsfeature[tmpFontFamily] + ", " + "monospace";
+        }
+    }
+
+    if (originFamily.includes("sans-serif")) {
+        let tmpFontFamily = originFamily.replace("sans-serif", "").replace(",", "").trim();
+        if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+            originFamily = opts.fontsfeature[tmpFontFamily] + ", " + "sans-serif";
+        }
+    }
+
+    if (originFamily.includes("serif")) {
+        let tmpFontFamily = originFamily.replace("serif", "").replace(",", "").trim();
+        if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
+            originFamily = opts.fontsfeature[tmpFontFamily] + ", " + "serif";
+        }
+    }
+    return originFamily;
+}
+
 Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
     get() {
-        if (this.style.fontFamily.includes("monospace")) {
-            let tmpFontFamily = this.style.fontFamily.replace("monospace", "").replace(",", "").trim();
-            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-                console.log("检测到key...", this.style.fontFamily);
-                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "monospace";
-            }
-        }
 
-        if (this.style.fontFamily.includes("sans-serif")) {
-            let tmpFontFamily = this.style.fontFamily.replace("sans-serif", "").replace(",", "").trim();
-            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-                console.log("检测到key...", this.style.fontFamily);
-                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "sans-serif";
-            }
-        }
-
-        if (this.style.fontFamily.includes("serif")) {
-            let tmpFontFamily = this.style.fontFamily.replace("serif", "").replace(",", "").trim();
-            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-                console.log("检测到key...", this.style.fontFamily);
-                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "serif";
-            }
-        }
-
-        if (opts.fontsfeature.hasOwnProperty(this.style.fontFamily)) {
-            this.style.fontFamily = opts.fontsfeature[this.style.fontFamily];
-        }
-
+        this.style.fontFamily = hookFonts(this.style.fontFamily);
         let height = 500;
         try {
             height = Math.floor(this.getBoundingClientRect().height);
@@ -55,30 +53,7 @@ Object.defineProperty(HTMLElement.prototype, "offsetWidth", {
         // if (opts.fonts_start < opts.fontsfeature.change_index.length && opts.fontsfeature.change_index[opts.fonts_start] !== 0) {
         //     this.style.fontFamily = opts.fontsfeature.width[opts.fonts_start];
         // }
-        if (this.style.fontFamily.includes("monospace")) {
-            let tmpFontFamily = this.style.fontFamily.replace("monospace", "").replace(",", "").trim();
-            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-                console.log("检测到key...", this.style.fontFamily);
-                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "monospace";
-            }
-        }
-
-        if (this.style.fontFamily.includes("sans-serif")) {
-            let tmpFontFamily = this.style.fontFamily.replace("sans-serif", "").replace(",", "").trim();
-            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-                console.log("检测到key...", this.style.fontFamily);
-                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "sans-serif";
-            }
-        }
-
-        if (this.style.fontFamily.includes("serif")) {
-            let tmpFontFamily = this.style.fontFamily.replace("serif", "").replace(",", "").trim();
-            if (opts.fontsfeature.hasOwnProperty(tmpFontFamily)) {
-                console.log("检测到key...", this.style.fontFamily);
-                this.style.fontFamily = opts.fontsfeature[tmpFontFamily] + ", " + "serif";
-            }
-        }
-
+        this.style.fontFamily = hookFonts(this.style.fontFamily);
 
         let width = 500;
         try {
