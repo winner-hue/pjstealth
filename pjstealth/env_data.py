@@ -280,5 +280,3 @@ env_data = {
     "cssfeature": css_info,
     "screen_color_depth": random.choice([24, 30])
 }
-
-print(env_data)
