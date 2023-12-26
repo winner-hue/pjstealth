@@ -278,5 +278,5 @@ env_data = {
     "is_mobile": False,
     "fontsfeature": fonts_info,
     "cssfeature": css_info,
-    "screen_color_depth": random.choice([24, 30])
+    "screen_color_depth": random.choice([16, 24, 30])
 }

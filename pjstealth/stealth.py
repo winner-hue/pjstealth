@@ -132,7 +132,6 @@ class StealthConfig(object):
                 ['MacIntel', 'Win64'])
 
             self.sys_platform = env_data.get(self.navigator_platform).get("sys_platform")
-
             self.navigator_hardware_concurrency = env_data.get("navigator_hardware_concurrency")
             self.device_memory = env_data.get("device_memory")
             self.cssfeature = env_data.get("cssfeature")
@@ -142,26 +141,29 @@ class StealthConfig(object):
             self.videofeature = env_data.get("videofeature")
             self.clientrectfeature = env_data.get("clientrectfeature")
             self.headless_check = env_data.get("headless_check")
-
             self.is_mobile = False
-
             self.screen_color_depth = env_data.get("screen_color_depth")
+
+        self.navigator_languages = kwargs.get("navigator_languages") if kwargs.get(
+            "navigator_languages") else self.navigator_languages
+        self.navigator_language = kwargs.get("navigator_language") if kwargs.get(
+            "navigator_language") else self.navigator_language
+        self.navigator_platform: str = kwargs.get("navigator_platform") if kwargs.get(
+            "navigator_platform") else self.navigator_platform
+        self.navigator_user_agent = kwargs.get("user_agent") if kwargs.get(
+            "user_agent") is not None else self.navigator_user_agent
+        if self.navigator_platform is not None:
+            self.sys_platform = "Windows" if self.navigator_platform.startswith("W") else "macOS"
         else:
-            self.navigator_languages = kwargs.get("navigator_languages")
-            self.navigator_language = kwargs.get("navigator_language")
-            self.navigator_platform: str = kwargs.get("navigator_platform") if kwargs.get(
-                "navigator_platform") else self.navigator_platform
-            self.navigator_user_agent = kwargs.get("user_agent") if kwargs.get(
-                "user_agent") is not None else self.navigator_user_agent
-            if self.navigator_platform is not None:
-                self.sys_platform = "Windows" if self.navigator_platform.startswith("W") else "macOS"
-            else:
-                self.sys_platform = None
-            self.navigator_hardware_concurrency = kwargs.get("navigator_hardware_concurrency")
-            self.device_memory = kwargs.get("device_memory")
-            self.is_mobile = kwargs.get("is_mobile")
-            self.browser_version = kwargs.get("browser_version")
-            self.screen_color_depth = kwargs.get("screen_color_depth")
+            self.sys_platform = None
+        self.navigator_hardware_concurrency = kwargs.get("navigator_hardware_concurrency") if kwargs.get(
+            "navigator_hardware_concurrency") else self.navigator_hardware_concurrency
+        self.device_memory = kwargs.get("device_memory") if kwargs.get("device_memory") else self.device_memory
+        self.is_mobile = kwargs.get("is_mobile") if kwargs.get("is_mobile") else self.is_mobile
+        self.browser_version = kwargs.get("browser_version") if kwargs.get("browser_version") else self.browser_version
+        self.screen_color_depth = kwargs.get("screen_color_depth") if kwargs.get(
+            "screen_color_depth") else self.screen_color_depth
+
         self.vendor = kwargs.get("vendor") if kwargs.get("vendor") is not None else self.vendor
         self.renderer = kwargs.get("renderer") if kwargs.get("renderer") is not None else self.renderer
         self.nav_vendor = kwargs.get("nav_vendor") if kwargs.get("nav_vendor") is not None else self.nav_vendor
@@ -187,7 +189,6 @@ class StealthConfig(object):
         self.outerdimensions = kwargs.get("outerdimensions") if kwargs.get(
             "outerdimensions") is not None else self.outerdimensions
         self.hairline = kwargs.get("hairline") if kwargs.get("hairline") is not None else self.hairline
-
         self.cssfeature = kwargs.get("cssfeature") if kwargs.get("cssfeature") is not None else self.cssfeature
         self.fontsfeature = kwargs.get("fontsfeature") if kwargs.get("fontsfeature") is not None else self.fontsfeature
         self.webrtc = kwargs.get("webrtc") if kwargs.get("webrtc") is not None else self.webrtc
