@@ -76,7 +76,7 @@ class StealthConfig(object):
     # 随机特征开启默认为false
     random_feature = True
 
-    def __init__(self, navigator_user_agent, navigator_platform, **kwargs):
+    def __init__(self, navigator_user_agent, navigator_platform, kwargs):
         # 匹配user-agent
         self.navigator_user_agent: str = navigator_user_agent
         self.navigator_platform = navigator_platform
@@ -117,7 +117,7 @@ class StealthConfig(object):
                                 break
 
                 if self.navigator_user_agent.lower().__contains__("(windows"):
-                    self.navigator_platform = 'Win64'
+                    self.navigator_platform = 'Win32'
 
                     self.vendor = env_data.get(self.navigator_platform).get("webgl_infos")[0]
                     self.renderer = env_data.get(self.navigator_platform).get("webgl_infos")[1]
@@ -129,7 +129,7 @@ class StealthConfig(object):
 
                 self.browser_version = re.search(r"Chrome/(\d+)", self.navigator_user_agent).group(1)
             self.navigator_platform = self.navigator_platform if self.navigator_platform is not None else random.choice(
-                ['MacIntel', 'Win64'])
+                ['MacIntel', 'Win32'])
 
             self.sys_platform = env_data.get(self.navigator_platform).get("sys_platform")
             self.navigator_hardware_concurrency = env_data.get("navigator_hardware_concurrency")
@@ -159,7 +159,7 @@ class StealthConfig(object):
         self.navigator_hardware_concurrency = kwargs.get("navigator_hardware_concurrency") if kwargs.get(
             "navigator_hardware_concurrency") else self.navigator_hardware_concurrency
         self.device_memory = kwargs.get("device_memory") if kwargs.get("device_memory") else self.device_memory
-        self.is_mobile = kwargs.get("is_mobile") if kwargs.get("is_mobile") else self.is_mobile
+        self.is_mobile = kwargs.get("is_mobile") if kwargs.get("is_mobile") is not None else self.is_mobile
         self.browser_version = kwargs.get("browser_version") if kwargs.get("browser_version") else self.browser_version
         self.screen_color_depth = kwargs.get("screen_color_depth") if kwargs.get(
             "screen_color_depth") else self.screen_color_depth

@@ -1,19 +1,19 @@
 import random
 
 css_info = {
-    "activeborder": random.choice(["rgb(118, 118, 118)", "rgb(0, 0, 0)"]),
-    "activetext": random.choice(["rgb(255, 0, 0)", "rgb(0, 102, 204)"]),
-    "graytext": random.choice(["rgb(128, 128, 128)", "rgb(109, 109, 109)"]),
-    "highlight": random.choice(["rgb(181, 213, 255)", "rgb(51, 153, 255)"]),
-    "highlighttext": random.choice(["rgb(0, 0, 0)", "rgb(255, 255, 255)"]),
-    "linktext": random.choice(["rgb(0, 0, 238)", "rgb(0, 102, 204)"]),
-    "threeddarkshadow": random.choice(["rgb(118, 118, 118)", "rgb(0, 0, 0)"]),
-    "threedface": random.choice(["rgb(239, 239, 239)", "rgb(240, 240, 240)"]),
-    "threedhighlight": random.choice(["rgb(0, 0, 0)", "rgb(118, 118, 118)"]),
-    "threedlightshadow": random.choice(["rgb(118, 118, 118)", "rgb(0, 0, 0)"]),
-    "threedshadow": random.choice(["rgb(118, 118, 118)", "rgb(0, 0, 0)"]),
-    "visitedtext": random.choice(["rgb(85, 26, 139)", "rgb(0, 102, 204)"]),
-    "windowframe": random.choice(["rgb(118, 118, 118)", "rgb(0, 0, 0)"])
+    "activeborder": random.choice(["rgb(118, 118, 118)", "rgb(128, 128, 128)", "rgb(109, 109, 109)"]),
+    "activetext": random.choice(["rgb(255, 102, 0)", "rgb(100, 102, 204)"]),
+    "graytext": random.choice(["rgb(128, 104, 128)", "rgb(244, 109, 109)"]),
+    "highlight": random.choice(["rgb(185, 213, 255)", "rgb(120, 109, 255)"]),
+    "highlighttext": random.choice(["rgb(0, 0, 0)", "rgb(220, 220, 220)"]),
+    "linktext": random.choice(["rgb(0, 230, 230)", "rgb(0, 120, 120)"]),
+    "threeddarkshadow": random.choice(["rgb(118, 118, 118)", "rgb(35, 35, 35)"]),
+    "threedface": random.choice(["rgb(210, 210, 210)", "rgb(240, 240, 240)"]),
+    "threedhighlight": random.choice(["rgb(55, 55, 55)", "rgb(108, 108, 118)"]),
+    "threedlightshadow": random.choice(["rgb(118, 118, 118)", "rgb(80, 80, 80)"]),
+    "threedshadow": random.choice(["rgb(118, 118, 118)", "rgb(49, 49, 49)"]),
+    "visitedtext": random.choice(["rgb(85, 55, 139)", "rgb(0, 120, 204)"]),
+    "windowframe": random.choice(["rgb(118, 118, 118)", "rgb(55, 55, 55)"])
 }
 
 font_names = [
@@ -225,6 +225,7 @@ windows_webgl = [
     ['Google Inc.(NVIDIA)', 'ANGLE (NVIDIA, NVIDIA GeForce RTX 2080 Ti Direct3D12 vs_5_0 ps_5_0, D3D12)'],
     ['Google Inc.(NVIDIA)', 'ANGLE (NVIDIA, NVIDIA GeForce RTX 2070 Super Direct3D12 vs_5_0 ps_5_0, D3D12)'],
     ['Google Inc.(NVIDIA)', 'ANGLE (NVIDIA, NVIDIA GeForce RTX 2080 Super Direct3D12 vs_5_0 ps_5_0, D3D12)'],
+    ['Google Inc.(NVIDIA)', 'ANGLE (NVIDIA, NVIDIA GeForce RTX 2060 Super Direct3D12 vs_5_0 ps_5_0, D3D12)'],
 ]
 mac_webgl = [
     ["Google Inc. (Apple)", "ANGLE (Apple, Apple M1, OpenGL 4.1)"],
@@ -254,7 +255,7 @@ videofeature = {
 clientrectfeature = False
 navigator_hardware_concurrency = random.choice([8, 4, 16])
 env_data = {
-    "Win64": {
+    "Win32": {
         "webgl_infos": random.choice(windows_webgl),
         "sys_platform": "Windows"
     },
