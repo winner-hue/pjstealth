@@ -1,6 +1,6 @@
 # pjstealth
 
-支持浏览器特征抹除，及浏览器指纹随机化；当前仅支持playwright自动化工具，后续会考虑增加selenium接口
+支持浏览器特征抹除(base playwright-stealth)，及浏览器指纹随机化；当前仅支持playwright自动化工具，后续会考虑增加selenium接口
 
 # install
 
