@@ -5,12 +5,20 @@ import re
 from dataclasses import dataclass
 from typing import Optional, Dict
 from .env_data import env_data
-import pkg_resources
+import platform
 
 
-def from_file(name):
-    """Read script from ./js directory"""
-    return pkg_resources.resource_string('pjstealth', f'feature/{name}').decode()
+if platform.python_version() < "3.12":
+    import pkg_resources
+    def from_file(name):
+        """Read script from ./js directory for python3.11 or before"""
+        return pkg_resources.resource_string('pjstealth', f'feature/{name}').decode()
+
+else:
+    from importlib.resources import files 
+    def from_file(name):
+        """Read script form ./js directory for python3.12 or later"""
+        return files('pjstealth').joinpath(f'feature/{name}').read_text(encoding='utf-8')
 
 
 SCRIPTS: Dict[str, str] = {
